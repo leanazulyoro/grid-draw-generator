@@ -3,6 +3,7 @@ import './App.css';
 import ConfigBarContainer from './containers/ConfigBarContainer';
 import CanvasGrid from './components/CanvasGrid';
 import CanvasGridMultiplier from './components/CanvasGridMultiplier';
+import DropZone from './components/DropZone';
 
 export const AppContext = React.createContext({
   columns: 3,
@@ -18,6 +19,7 @@ function App() {
   const [columns, setColumns] = useState();
   const [rows, setRows] = useState();
   const [multiplier, setMultiplier] = useState(2);
+  const [img, setImg] = useState(null);
 
   const handleSubmit = (values) => {
     setColumns(values.columns);
@@ -31,13 +33,16 @@ function App() {
         <ConfigBarContainer onSubmit={handleSubmit} />
 
         <div className="canvas-grids-container">
-          <CanvasGrid
-            id="image-canvas-grid"
-            rows={rows}
-            columns={columns}
-            width={WIDTH}
-            height={HEIGHT}
-          />
+          <DropZone onSuccess={(imgUrl) => setImg(imgUrl)}>
+            <CanvasGrid
+              id="image-canvas-grid"
+              rows={rows}
+              columns={columns}
+              width={WIDTH}
+              height={HEIGHT}
+              background={img}
+            />
+          </DropZone>
           <CanvasGridMultiplier
             id="blank-canvas-grid"
             rows={rows}
@@ -46,15 +51,6 @@ function App() {
             width={WIDTH}
             height={HEIGHT}
           />
-        </div>
-
-
-        <div className="displayer">
-          columns: {columns}
-          <br />
-          rows: {rows}
-          <br />
-          multiplier: {multiplier}
         </div>
       </div>
     </AppContext.Provider>
