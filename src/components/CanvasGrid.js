@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const CanvasGrid = ({id, rows, columns, width, height, background}) => {
+const CanvasGrid = ({id, rows, columns, width, height, background, strokeColor}) => {
   const canvas = useRef();
   const [rowSize, setRowSize] = useState(0);
   const [columnSize, setColumnSize] = useState(0);
@@ -29,6 +29,7 @@ const CanvasGrid = ({id, rows, columns, width, height, background}) => {
       ctx.moveTo(location, 0);
       ctx.lineTo(location, height);
       ctx.closePath();
+      ctx.strokeStyle = strokeColor;
       ctx.stroke();
     }
   }, [ctx, height]);
@@ -39,6 +40,7 @@ const CanvasGrid = ({id, rows, columns, width, height, background}) => {
       ctx.moveTo(0, location);
       ctx.lineTo(width, location);
       ctx.closePath();
+      ctx.strokeStyle = strokeColor;
       ctx.stroke();
     }
   }, [ctx, width]);
@@ -96,7 +98,7 @@ const CanvasGrid = ({id, rows, columns, width, height, background}) => {
       width={width}
       height={height}
       style={{
-        border: '1px solid #000000',
+        border: `1px solid ${strokeColor}`,
       }}
     />
   )
@@ -108,13 +110,15 @@ CanvasGrid.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   background: PropTypes.string,
+  strokeColor: PropTypes.string,
 };
 CanvasGrid.defaultProps = {
-  rows: 3,
-  columns: 3,
+  rows: 5,
+  columns: 5,
   width: 200,
   height: 200,
   background: '',
+  strokeColor: '#000'
 };
 
 export default CanvasGrid;

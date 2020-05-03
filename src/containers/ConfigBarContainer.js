@@ -9,18 +9,18 @@ const ConfigBarContainer = ({onSubmit}) => {
   const [multiplier, setMultiplier] = useState(2);
 
   return (
-    <AppContext.Consumer>
-      {(context) => (
-        <ConfigBar columns={columns} rows={rows} multiplier={multiplier}
-                   onColumnsChange={setColumns}
-                   onRowsChange={setRows}
-                   onMultiplierChange={setMultiplier}
-                   onSubmit={(e) => {
-                     e.preventDefault();
-                     onSubmit({columns, rows, multiplier})
-                   }} />
-      )}
-    </AppContext.Consumer>
+    <ConfigBar
+      columns={columns}
+      rows={rows}
+      multiplier={multiplier}
+      onColumnsChange={setColumns}
+      onRowsChange={setRows}
+      onMultiplierChange={setMultiplier}
+      onSubmit={(e) => {
+       e.preventDefault();
+       onSubmit({columns, rows, multiplier})
+      }}
+    />
   )
 };
 

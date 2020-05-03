@@ -1,11 +1,10 @@
 import CanvasGrid from './CanvasGrid';
 import React from 'react';
 
-const CanvasGridMultiplier = ({rows, columns, multiplier, width, height}) => {
+const CanvasGridMultiplier = ({multiplier, width, height, ...props}) => {
   return (
     <CanvasGrid
-      rows={rows}
-      columns={columns}
+      {...props}
       width={width * multiplier}
       height={height * multiplier}
     />

@@ -25,7 +25,7 @@ const DropZone = ({children, onSuccess}) => {
     <div {...getRootProps()}>
       <input {...getInputProps()} />
       {children}
-      <p>Drop your image here! (or click and select)</p>
+      <p className="drop-here-text">Drop your image here! (or click and select)</p>
     </div>
   )
 

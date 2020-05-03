@@ -5,19 +5,18 @@ import CanvasGrid from './components/CanvasGrid';
 import CanvasGridMultiplier from './components/CanvasGridMultiplier';
 import DropZone from './components/DropZone';
 
-export const AppContext = React.createContext({
-  columns: 3,
-  rows: 3,
-  multiplier: 2,
-});
+export const AppContext = React.createContext({});
 
-const WIDTH = 200;
-const HEIGHT = 200;
+const DEFAULT_ROWS = 7;
+const DEFAULT_COLUMNS = 7;
+
+const WIDTH = 300;
+const HEIGHT = 300;
 
 function App() {
 
-  const [columns, setColumns] = useState();
-  const [rows, setRows] = useState();
+  const [columns, setColumns] = useState(DEFAULT_COLUMNS);
+  const [rows, setRows] = useState(DEFAULT_ROWS);
   const [multiplier, setMultiplier] = useState(2);
   const [img, setImg] = useState(null);
 
@@ -31,7 +30,6 @@ function App() {
     <AppContext.Provider value={{ columns, rows, multiplier, setColumns, setRows, setMultiplier}}>
       <div className="App">
         <ConfigBarContainer onSubmit={handleSubmit} />
-
         <div className="canvas-grids-container">
           <DropZone onSuccess={(imgUrl) => setImg(imgUrl)}>
             <CanvasGrid
@@ -50,6 +48,7 @@ function App() {
             multiplier={multiplier}
             width={WIDTH}
             height={HEIGHT}
+            strokeColor="#999"
           />
         </div>
       </div>

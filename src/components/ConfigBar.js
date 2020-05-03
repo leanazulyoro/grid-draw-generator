@@ -11,7 +11,7 @@ const ConfigBar = ({
   onSubmit
 }) => {
   return (
-    <div>
+    <div id="config-bar">
       <form onSubmit={onSubmit}>
         <div>
           <label htmlFor="columns">Columns</label>

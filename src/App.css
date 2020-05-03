@@ -1,4 +1,8 @@
-
+.App {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+}
 
 .canvas-grids-container {
   display: flex;
@@ -9,6 +13,10 @@
   margin-right: 2em;
 }
 
-#blank-canvas-grid {
 
+@media print {
+  #config-bar,
+  .drop-here-text {
+    display: none;
+  }
 }
