@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import ConfigBarContainer from './containers/ConfigBarContainer';
+
+export const AppContext = React.createContext({
+  width: 3,
+  height: 3,
+  multiplier: 2,
+});
 
 function App() {
+
+  const [width, setWidth] = useState();
+  const [height, setHeight] = useState();
+  const [multiplier, setMultiplier] = useState();
+
+  const handleSubmit = (values) => {
+    setWidth(values.width);
+    setHeight(values.height);
+    setMultiplier(values.multiplier);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={{ width, height, multiplier, setWidth, setHeight, setMultiplier}}>
+      <div className="App">
+        <ConfigBarContainer onSubmit={handleSubmit} />
+        <div className="displayer">
+          width: {width}
+          <br />
+          height: {height}
+          <br />
+          multiplier: {multiplier}
+        </div>
+      </div>
+    </AppContext.Provider>
   );
 }
 
