@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ConfigBar = ({
-  width,
-  height,
+  columns,
+  rows,
   multiplier,
-  onWidthChange,
-  onHeightChange,
+  onColumnsChange,
+  onRowsChange,
   onMultiplierChange,
   onSubmit
 }) => {
@@ -14,15 +14,15 @@ const ConfigBar = ({
     <div>
       <form onSubmit={onSubmit}>
         <div>
-          <label htmlFor="width">Width</label>
-          <input name="width" type="number" value={width}
-                 onChange={(e) => onWidthChange(e.target.value)}
+          <label htmlFor="columns">Columns</label>
+          <input name="columns" type="number" value={columns}
+                 onChange={(e) => {onColumnsChange(e.target.value)}}
           />
         </div>
         <div>
-          <label htmlFor="height">Height</label>
-          <input name="height" type="number" value={height}
-                 onChange={(e) => onHeightChange(e.target.value)}
+          <label htmlFor="rows">Rows</label>
+          <input name="rows" type="number" value={rows}
+                 onChange={(e) => onRowsChange(e.target.value)}
           />
         </div>
 
@@ -46,20 +46,20 @@ const ConfigBar = ({
 };
 
 ConfigBar.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
+  columns: PropTypes.number,
+  rows: PropTypes.number,
   multiplier: PropTypes.number,
-  onWidthChange: PropTypes.func,
-  onHeightChange: PropTypes.func,
+  onColumnsChange: PropTypes.func,
+  onRowsChange: PropTypes.func,
   onMultiplierChange: PropTypes.func,
 };
 
 ConfigBar.defaultProps = {
-  width: 3,
-  height: 3,
+  columns: 3,
+  rows: 3,
   multiplier: 2,
-  onWidthChange: () => {},
-  onHeightChange: () => {},
+  onColumnsChange: () => {},
+  onRowsChange: () => {},
   onMultiplierChange: () => {},
 };
 

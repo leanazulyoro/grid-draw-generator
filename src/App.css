@@ -1,0 +1,14 @@
+
+
+.canvas-grids-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+#image-canvas-grid {
+  margin-right: 2em;
+}
+
+#blank-canvas-grid {
+
+}
