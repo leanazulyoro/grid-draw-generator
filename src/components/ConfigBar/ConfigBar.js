@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './ConfigBar.scss'
 
 const ConfigBar = ({
   columns,
@@ -27,27 +28,27 @@ const ConfigBar = ({
   };
 
   return (
-    <div id="config-bar">
+    <div id="config-bar" className="config-bar">
       <form onSubmit={onSubmit}>
-        <div>
+        <div className="form-control form-control-text">
           <label htmlFor="columns">Columns</label>
           <input name="columns" type="number" value={columns}
                  onChange={(e) => {handleRowsAndColsChange('cols', e.target.value)}}
           />
         </div>
-        <div>
+        <div className="form-control form-control-btn">
           <label htmlFor="link-rows-cols">
             <input name="link-rows-cols" type="checkbox" checked={linkRowsAndCols} onChange={onToggleLinkRowsCols}/>
           </label>
         </div>
-        <div>
+        <div className="form-control form-control-text">
           <label htmlFor="rows">Rows</label>
           <input name="rows" type="number" value={rows}
                  onChange={(e) => handleRowsAndColsChange('rows', e.target.value)}
           />
         </div>
 
-        <div>
+        <div className="form-control form-control-dropdown">
           <label htmlFor="size">Size</label>
           <select name="size"
                   onChange={(e) => onMultiplierChange(e.target.value)}
@@ -55,8 +56,6 @@ const ConfigBar = ({
           >
             <option value={1}>Single</option>
             <option value={2}>Double</option>
-            <option value={3}>Triple</option>
-            <option value={4}>Cuadruple</option>
           </select>
         </div>
       </form>

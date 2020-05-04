@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.scss';
 import CanvasGrid from './components/CanvasGrid/CanvasGrid';
 import MultipliedCanvasGrid from './components/MultipliedCanvasGrid/MultipliedCanvasGrid';
 import DropZone from './components/DropZone/DropZone';
 import ConfigBar from './components/ConfigBar/ConfigBar';
+import PrintButton from './components/PrintButton/PrintButton';
+import BottomBar from './components/BottomBar/BottomBar';
 
 export const AppContext = React.createContext({});
 
@@ -55,7 +57,11 @@ function App() {
             strokeColor="#999"
           />
         </div>
+
       </div>
+      <BottomBar>
+        <PrintButton />
+      </BottomBar>
     </AppContext.Provider>
   );
 }

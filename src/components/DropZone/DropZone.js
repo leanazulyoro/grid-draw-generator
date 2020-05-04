@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react';
-import {useDropzone} from 'react-dropzone'
+import {useDropzone} from 'react-dropzone';
+import './DropZone.scss';
 
 const DropZone = ({children, onSuccess}) => {
 
   const onDrop = useCallback(acceptedFiles => {
-
-
     acceptedFiles.forEach((file) => {
       const reader = new FileReader;
       reader.onload = function() {
@@ -19,13 +18,13 @@ const DropZone = ({children, onSuccess}) => {
     });
 
   }, []);
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
+  const {getRootProps, getInputProps} = useDropzone({onDrop});
 
   return (
-    <div {...getRootProps()}>
+    <div className="drop-zone" {...getRootProps()}>
       <input {...getInputProps()} />
       {children}
-      <p className="drop-here-text">Drop your image here! (or click and select)</p>
+      <p className="drop-here-text">Drop your image here!</p>
     </div>
   )
 

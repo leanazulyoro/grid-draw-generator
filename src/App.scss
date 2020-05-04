@@ -1,0 +1,57 @@
+:root {
+  --bg-color: lightgray;
+  --fg-color: #000;
+  --border-color: #000;
+  --border-style: solid;
+  --border-width: 2px;
+
+  --border: var(--border-width) var(--border-style) var(--border-color);
+  --border-radius: 5px;
+
+  --padding: 1em;
+}
+
+
+.App {
+  padding: 10px;
+  height: calc(100vh - 20px);
+  display: flex;
+  flex-direction: column;
+  & > * {
+    flex-grow: 1;
+  }
+}
+
+.canvas-grids-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  background: white;
+  padding: var(--padding);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+
+.drop-zone {
+  margin-right: 2em;
+}
+
+@media print {
+  .config-bar,
+  .drop-here-text,
+  .bottom-bar,
+  .print-btn {
+    display: none;
+  }
+  .canvas-grids-container {
+    border: none;
+    padding: 0;
+    flex-wrap: nowrap;
+    & > * {
+      flex-shrink: 1;
+    }
+  }
+}

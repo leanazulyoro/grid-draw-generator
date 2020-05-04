@@ -1,0 +1,35 @@
+
+.config-bar {
+  background: var(--bg-color);
+  padding: var(--padding) var(--padding) 0;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  margin-bottom: 1em;
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+
+    .form-control {
+      margin-bottom: 1em;
+
+      &:not(:last-child) {
+        margin-right: 2em;
+      }
+    }
+
+    label {
+      font-weight: bold;
+      margin-right: .5em;
+    }
+
+    input, select {
+      border: var(--border);
+      border-radius: var(--border-radius);
+      font-size: 1em;
+      padding: .3em;
+    }
+  }
+}
