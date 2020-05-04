@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
-import ConfigBarContainer from './containers/ConfigBarContainer';
-import CanvasGrid from './components/CanvasGrid';
-import CanvasGridMultiplier from './components/CanvasGridMultiplier';
-import DropZone from './components/DropZone';
+import CanvasGrid from './components/CanvasGrid/CanvasGrid';
+import MultipliedCanvasGrid from './components/MultipliedCanvasGrid/MultipliedCanvasGrid';
+import DropZone from './components/DropZone/DropZone';
+import ConfigBar from './components/ConfigBar/ConfigBar';
 
 export const AppContext = React.createContext({});
 
@@ -17,19 +17,23 @@ function App() {
 
   const [columns, setColumns] = useState(DEFAULT_COLUMNS);
   const [rows, setRows] = useState(DEFAULT_ROWS);
+  const [linkRowsCols, setLinkRowsCols] = useState(true);
   const [multiplier, setMultiplier] = useState(2);
   const [img, setImg] = useState(null);
-
-  const handleSubmit = (values) => {
-    setColumns(values.columns);
-    setRows(values.rows);
-    setMultiplier(values.multiplier);
-  };
 
   return (
     <AppContext.Provider value={{ columns, rows, multiplier, setColumns, setRows, setMultiplier}}>
       <div className="App">
-        <ConfigBarContainer onSubmit={handleSubmit} />
+        <ConfigBar
+          rows={rows}
+          columns={columns}
+          multiplier={multiplier}
+          onColumnsChange={setColumns}
+          onRowsChange={setRows}
+          onMultiplierChange={setMultiplier}
+          linkRowsAndCols={linkRowsCols}
+          onToggleLinkRowsCols={() => setLinkRowsCols(() => !linkRowsCols)}
+        />
         <div className="canvas-grids-container">
           <DropZone onSuccess={(imgUrl) => setImg(imgUrl)}>
             <CanvasGrid
@@ -41,7 +45,7 @@ function App() {
               background={img}
             />
           </DropZone>
-          <CanvasGridMultiplier
+          <MultipliedCanvasGrid
             id="blank-canvas-grid"
             rows={rows}
             columns={columns}
