@@ -39,6 +39,16 @@
   margin-right: 2em;
 }
 
+@media (max-width: 480px) {
+  #blank-canvas-grid {
+    display: none;
+  }
+  .drop-zone {
+    margin-right: 0;
+    padding-bottom: 10em;
+  }
+}
+
 @media print {
   .config-bar,
   .drop-here-text,

@@ -49,7 +49,7 @@ const ConfigBar = ({
         </div>
 
         <div className="form-control form-control-dropdown">
-          <label htmlFor="size">Size</label>
+          <label htmlFor="size">Size of drawing grid</label>
           <select name="size"
                   onChange={(e) => onMultiplierChange(e.target.value)}
                   defaultValue={multiplier}

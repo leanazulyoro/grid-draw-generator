@@ -24,6 +24,9 @@
       font-weight: bold;
       margin-right: .5em;
     }
+    input {
+      width: 30px;
+    }
 
     input, select {
       border: var(--border);
