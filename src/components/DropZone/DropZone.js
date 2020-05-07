@@ -18,7 +18,10 @@ const DropZone = ({children, onSuccess}) => {
     });
 
   }, []);
-  const {getRootProps, getInputProps} = useDropzone({onDrop});
+  const {getRootProps, getInputProps} = useDropzone({
+    onDrop,
+    accept: 'image/jpeg, image/png, image/gif'
+  });
 
   return (
     <div className="drop-zone" {...getRootProps()}>
